@@ -1,5 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 console.log(path.resolve(__dirname, 'static'));
 
@@ -7,7 +8,7 @@ module.exports = {
     "mode": "development",
     "entry": "./src/index.js",
     "output": {
-        "path": __dirname + '/static',
+        "path":path.resolve(__dirname, 'static'),
         "filename": "bundle.js"
     },
     "devtool": "source-map",
@@ -50,6 +51,10 @@ module.exports = {
                 from: path.resolve(__dirname, 'src/index.html'),
                 to: path.resolve(__dirname, 'static')
             }
-        ])
+        ]),
+        new webpack.DefinePlugin({
+            'typeof CANVAS_RENDERER': JSON.stringify(true),
+            'typeof WEBGL_RENDERER': JSON.stringify(true)
+        })
     ]
 }
