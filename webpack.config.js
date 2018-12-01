@@ -1,4 +1,7 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+console.log(path.resolve(__dirname, 'static'));
 
 module.exports = {
     "mode": "development",
@@ -37,5 +40,16 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'static'),
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/index.html'),
+                to: path.resolve(__dirname, 'static')
+            }
+        ])
+    ]
 }
