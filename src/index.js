@@ -1,10 +1,11 @@
 import Phaser from 'phaser';
-import SimpleScene from './scenes/SimpleScene';
+import TowerDefenseScene from './scenes/TowerDefenseScene';
 
 const gameConfig = {
-  width: 680,
-  height: 400,
-  scene: SimpleScene,
+  width: 1024,
+  height: 768,
+  scene: TowerDefenseScene,
+  disableContextMenu: true,
 };
 
 function createGame() {
