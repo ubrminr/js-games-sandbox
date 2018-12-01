@@ -1,13 +1,14 @@
-import { log } from './logger';
-import 'phaser';
-import { SimpleScene } from './scenes/SimpleScene';
+import Phaser from 'phaser';
+import SimpleScene from './scenes/SimpleScene';
 
 const gameConfig = {
   width: 680,
   height: 400,
-  scene: SimpleScene
+  scene: SimpleScene,
 };
 
-new Phaser.Game(gameConfig);
+function createGame() {
+  return new Phaser.Game(gameConfig);
+}
 
-log('phaser stuff has bee loaded');
+createGame();
