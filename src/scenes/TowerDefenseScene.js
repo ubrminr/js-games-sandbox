@@ -6,13 +6,19 @@ class TowerDefenseScene extends Phaser.Scene {
   }
 
   create() {
-    const rect = this.add.rectangle(200, 200, 148, 148, 0x6666ff);
-    rect.setStrokeStyle(2, 0xff0000);
+    this.speed = Phaser.Math.GetSpeed(20, 1);
+
+    this.star = this.add.star(200, 200, 4, 10, 20, 0x6666ff);
   }
 
   update(time, delta) {
     this.time = time;
     this.delta = delta;
+
+    this.star.setPosition(
+      this.star.x + this.speed * delta,
+      this.star.y,
+    );
   }
 }
 
